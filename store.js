@@ -58,7 +58,7 @@ function addItemToCart(title, price, imageSrc) {
     const cartItemNames = cartItems.getElementsByClassName("cart-item-title")
     for(let i = 0; i<cartItemNames.length; i++) {
         if(cartItemNames[i].innerText == title) {
-            alert("This item has already been added to the cart!");
+            swal.fire("Oops...", "This item has already been added to the cart!", "error");
             return;
         }
     }
@@ -81,9 +81,9 @@ function addItemToCart(title, price, imageSrc) {
 function purchaseCliked() {
     const totalPrice = document.getElementsByClassName("cart-total-price")[0].innerText;
     if(totalPrice == "$0") {
-        alert("Please add items to the cart first");
+        swal.fire("Oops...","Please add items to the cart first", "error");
     } else {
-        alert("Thank you for your purchase");
+        swal.fire("Info","Thank you for your purchase", "success");
         const cartItems = document.getElementsByClassName("cart-items")[0];
         while(cartItems.hasChildNodes()) {
             cartItems.removeChild(cartItems.firstChild);
