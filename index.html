@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&family=Zen+Loop&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="index.js" async></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" async></script>
   </head>
   <body>
     <header class="main-header">
@@ -22,15 +24,15 @@
       </nav>
       <h1 class="band-name band-name-large">Thivery Corporation</h1>
       <div class="container">
-      <button class="btn btn-header" type="button">Get our latest album</button>
+      <button class="btn btn-header" id="getLatestAlbumBtn" type="button">Get our latest album</button>
       </div>
       <div class="container">
-        <button class="btn btn-header btn-play" type="button">&#9658</button>
+        <button class="btn btn-header btn-play" id="playMusicBtn" type="button">&#9658</button>
       </div>
     </header>
     <section class="content-section container">
      <h2 class="section-header">Tours</h2>
-     <div>
+     <div class="tours">
        <div class="tour-row">
          <span class="tour-item tour-date">JUL 29</span>
          <span class="tour-item tour-city">MIAMI, FL</span>

@@ -5,6 +5,15 @@ if(document.readyState == "loading") {
 }
 
 function ready() {
+    if(localStorage.getItem("lastAlbum")!= null) {
+        const lastAlbum = document.getElementById("latestAlbum")
+        const title = lastAlbum.getElementsByClassName("shop-item-title")[0].innerText;
+        const price = lastAlbum.getElementsByClassName("shop-item-price")[0].innerText;
+        const imageSrc = lastAlbum.getElementsByClassName("shop-item-img")[0].src;
+        addItemToCart(title, price, imageSrc);
+        updateCartTotal();
+        localStorage.removeItem("lastAlbum");
+    }
     const removeCartItemButtons = document.getElementsByClassName("btn-danger");
     for(let i=0; i<removeCartItemButtons.length; i++) {
         const button = removeCartItemButtons[i];
@@ -22,7 +31,7 @@ function ready() {
         const button = addToCartButtons[i];
         button.addEventListener("click", addToCartClicked)
     }
-
+    
     document.getElementsByClassName("btn-purchase")[0].addEventListener("click", purchaseCliked);
 
 }
@@ -49,6 +58,7 @@ function addToCartClicked(event) {
     const imageSrc = shopItem.getElementsByClassName("shop-item-img")[0].src;
     addItemToCart(title, price, imageSrc);
     updateCartTotal();
+    swal.fire("Info","Item added to the cart!", "success");
 }
 
 function addItemToCart(title, price, imageSrc) {
@@ -76,6 +86,7 @@ function addItemToCart(title, price, imageSrc) {
     cartItems.append(cartRow)
     cartRow.getElementsByClassName("btn-danger")[0].addEventListener("click", removeCartItem);
     cartRow.getElementsByClassName("cart-quant-input")[0].addEventListener("change", quantityChanged);
+    
 }
 
 function purchaseCliked() {
